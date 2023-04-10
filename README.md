@@ -1,5 +1,6 @@
 # TrelloByKiraradi
 
+[![Build status](https://ci.appveyor.com/api/projects/status/onuq64x05oltgatm?svg=true)](https://ci.appveyor.com/project/Kiraradi/trellobykiraradi)
 
 Init project 
 ```bash
