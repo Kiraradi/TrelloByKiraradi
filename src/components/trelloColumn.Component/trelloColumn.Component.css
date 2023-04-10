@@ -1,0 +1,91 @@
+.column {
+    padding: 20px;
+    flex-grow: 1;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+.column-title {
+    color: rgb(30,60,77);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+}
+
+.button-opsions {
+    width: 25px;
+    height: 25px;
+    color: #5e6c84;
+    background-color: rgb(255, 255, 255);
+    background-image: url(./img/9044968_overflow_menu_horizontal_icon.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    
+}
+
+.button-opsions:hover {
+    background-color: rgb(218, 218, 218);
+}
+
+.button-newTask {
+    background-color: rgb(255, 255, 255);
+    color: #5e6c84;
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%;
+    text-align: inherit;
+    padding: 5px;
+}
+
+.button-newTask:hover {
+    background-color: rgb(218, 218, 218);
+    text-decoration: underline;
+}
+
+
+.button-newTask__hide {
+    visibility: hidden;
+    margin-bottom: 45px;
+}
+
+.wraper-newTask {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.wraper-Form-newTask {
+    position: absolute;
+    width: 100%;
+    visibility: hidden;
+}
+
+.wraper-Form-newTask__active {
+    visibility: inherit;
+}
+
+.textarea-task {
+    width: 100%;
+    display: inline-block;
+    border: 1px solid #5e6c84;
+    height: 40px;
+    border-radius: 3px;
+    outline: none;
+    margin-bottom: 5px;
+}
+
+.button-add-task {
+    width: 35%;
+    height: 30px;
+    background-color: rgb(92,168,77);
+    color: rgb(255, 255, 255);
+}

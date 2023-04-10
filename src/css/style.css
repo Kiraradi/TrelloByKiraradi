@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+}
+
+.wraper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    width: 100%;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+}
+
+.container-trello-board {
+    flex-grow: 1;
+    background-color: rgb(16,122,187);
+}
+
+.header {
+    max-width: 100%;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+}
