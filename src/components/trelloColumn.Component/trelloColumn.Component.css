@@ -1,7 +1,7 @@
 .column {
     padding: 20px;
     flex-grow: 1;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(222,226,229);
     border-radius: 5px;
 }
 
@@ -23,7 +23,7 @@ button {
     width: 25px;
     height: 25px;
     color: #5e6c84;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(222,226,229);
     background-image: url(./img/9044968_overflow_menu_horizontal_icon.svg);
     background-position: center;
     background-repeat: no-repeat;
@@ -31,12 +31,43 @@ button {
     
 }
 
-.button-opsions:hover {
-    background-color: rgb(218, 218, 218);
+.tasks-list {
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
 }
 
-.button-newTask {
+.item-task {
+    width: 100%;
+    padding: 10px;
+    border: 2px groove rgb(218, 218, 218);
+    border-radius: 5px;
+    color: #5e6c84;
+    font-size: 16px;
     background-color: rgb(255, 255, 255);
+    position: relative;
+}
+
+.close-button-task {
+    width: 15px;
+    height: 15px;
+    background-image: url('./img/close_cross_icon_128690.svg');
+    background-size: 15px;
+    background-position: center;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top:4px;
+    right: 5px;
+}
+
+.button-opsions:hover, .close-button-task:hover {
+    background-color: rgb(214, 214, 214);
+}
+
+
+.button-newTask {
+    background-color: rgb(222,226,229);
     color: #5e6c84;
     font-size: 14px;
     font-weight: 600;
@@ -53,7 +84,7 @@ button {
 
 .button-newTask__hide {
     visibility: hidden;
-    margin-bottom: 45px;
+    margin-bottom: 70px;
 }
 
 .wraper-newTask {
@@ -61,12 +92,16 @@ button {
     display: flex;
     flex-wrap: wrap;
     position: relative;
+    margin-top: 5px;
 }
 
 .wraper-Form-newTask {
     position: absolute;
     width: 100%;
     visibility: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .wraper-Form-newTask__active {
@@ -76,16 +111,51 @@ button {
 .textarea-task {
     width: 100%;
     display: inline-block;
-    border: 1px solid #5e6c84;
-    height: 40px;
-    border-radius: 3px;
+    border: 2px groove rgb(218, 218, 218);
+    min-height: 40px;
+    max-height: 70px;
+    border-radius: 5px;
     outline: none;
     margin-bottom: 5px;
+    resize: vertical;
+    padding: 5px;
+    color: #5e6c84;
+}
+
+.textarea-task__borderRed {
+    border: 2px solid red;
+}
+
+.wraper-buttons-task {
+    display: flex;
+    width: 60%;
 }
 
 .button-add-task {
-    width: 35%;
+    width: 70px;
     height: 30px;
     background-color: rgb(92,168,77);
     color: rgb(255, 255, 255);
 }
+
+.button-close-task {
+    width: 30px;
+    height: 30px;
+    background-image: url(./img/close_cross_icon_128690.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgb(222, 226, 229);
+    margin-left: 10px;
+}
+
+.button-close-task:hover {
+    background-color: rgb(218, 218, 218);
+}
+
+.button-opsions-task {
+    width: 30px;
+    height: 30px;
+}
+
+
+
