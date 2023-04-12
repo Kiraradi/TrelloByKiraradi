@@ -10,7 +10,7 @@ body {
     height: 100vh;
 }
 
-.wraper {
+.wrapper {
     min-height: 100%;
     display: flex;
     flex-direction: column;

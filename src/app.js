@@ -1,7 +1,7 @@
-import TrelloBoard from "./components/trelloBoard.Component/trelloBoard.Component";
+import Board from "./js/components/board/board";
 
 const conteinerTrelloBoard = document.querySelector(".container-trello-board");
 
-const trelloBoard = new TrelloBoard(conteinerTrelloBoard);
+const trelloBoard = new Board(conteinerTrelloBoard);
 
-trelloBoard.drowUi();
+trelloBoard.drawUI();

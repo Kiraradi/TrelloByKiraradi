@@ -19,16 +19,15 @@ button {
     border-radius: 3px;
 }
 
-.button-opsions {
+.options-button {
     width: 25px;
     height: 25px;
     color: #5e6c84;
     background-color: rgb(222,226,229);
-    background-image: url(./img/9044968_overflow_menu_horizontal_icon.svg);
+    background-image: url(/src/img/overflow_menu_horizontal_icon.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 20px;
-    
 }
 
 .tasks-list {
@@ -38,7 +37,7 @@ button {
     flex-direction: column;
 }
 
-.item-task {
+.task {
     width: 100%;
     padding: 10px;
     border: 2px groove rgb(218, 218, 218);
@@ -49,10 +48,10 @@ button {
     position: relative;
 }
 
-.close-button-task {
+.close-task-button {
     width: 15px;
     height: 15px;
-    background-image: url('./img/close_cross_icon_128690.svg');
+    background-image: url('/src/img/close_icon.svg');
     background-size: 15px;
     background-position: center;
     background-color: rgb(255, 255, 255);
@@ -61,12 +60,12 @@ button {
     right: 5px;
 }
 
-.button-opsions:hover, .close-button-task:hover {
+.options-button:hover, .close-task-button:hover {
     background-color: rgb(214, 214, 214);
 }
 
 
-.button-newTask {
+.create-task-button {
     background-color: rgb(222,226,229);
     color: #5e6c84;
     font-size: 14px;
@@ -76,18 +75,18 @@ button {
     padding: 5px;
 }
 
-.button-newTask:hover {
+.create-task-button:hover {
     background-color: rgb(218, 218, 218);
     text-decoration: underline;
 }
 
 
-.button-newTask__hide {
+.create-task-button__hide {
     visibility: hidden;
     margin-bottom: 70px;
 }
 
-.wraper-newTask {
+.task-button-wrapper {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -95,7 +94,7 @@ button {
     margin-top: 5px;
 }
 
-.wraper-Form-newTask {
+.add-task-form-wrapper {
     position: absolute;
     width: 100%;
     visibility: hidden;
@@ -104,11 +103,11 @@ button {
     justify-content: space-between;
 }
 
-.wraper-Form-newTask__active {
+.add-task-form-wrapper__active {
     visibility: inherit;
 }
 
-.textarea-task {
+.add-task-textarea {
     width: 100%;
     display: inline-block;
     border: 2px groove rgb(218, 218, 218);
@@ -122,7 +121,7 @@ button {
     color: #5e6c84;
 }
 
-.textarea-task__borderRed {
+.add-task-textarea__borderRed {
     border: 2px solid red;
 }
 
@@ -131,28 +130,28 @@ button {
     width: 60%;
 }
 
-.button-add-task {
+.add-task-button {
     width: 70px;
     height: 30px;
     background-color: rgb(92,168,77);
     color: rgb(255, 255, 255);
 }
 
-.button-close-task {
+.close-task-form-button {
     width: 30px;
     height: 30px;
-    background-image: url(./img/close_cross_icon_128690.svg);
+    background-image: url(/src/img/close_icon.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-color: rgb(222, 226, 229);
     margin-left: 10px;
 }
 
-.button-close-task:hover {
+.close-task-form-button:hover {
     background-color: rgb(218, 218, 218);
 }
 
-.button-opsions-task {
+.add-options-button {
     width: 30px;
     height: 30px;
 }
