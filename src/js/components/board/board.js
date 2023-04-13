@@ -5,24 +5,65 @@ import localStorageService from "../../services/localStorageService";
 export default class Board {
   constructor(containerEl) {
     this.containerEl = containerEl;
+    this.isPageLoaded = false;
+    this.loadPage();
+  }
+
+  loadPage() {
+    const taskArray = localStorageService.getTasks();
+
+    if (taskArray.length > 0) {
+      const todoTaskArray = taskArray.filter((el) => el.status === "ToDo");
+      const todoProgressArray = taskArray.filter(
+        (el) => el.status === "Progress"
+      );
+      const todoDoneArray = taskArray.filter((el) => el.status === "Done");
+
+      this.drawUI();
+      this.isPageLoaded = true;
+      if (todoTaskArray.length > 0) {
+        todoTaskArray.sort(
+          (firstEl, secondEl) => firstEl.board - secondEl.board
+        );
+        todoTaskArray.forEach((el) => this.columnTodo.addTask(el.name, true));
+      }
+
+      if (todoProgressArray.length > 0) {
+        todoProgressArray.sort(
+          (firstEl, secondEl) => firstEl.board - secondEl.board
+        );
+        todoProgressArray.forEach((el) =>
+          this.columnProgress.addTask(el.name, true)
+        );
+      }
+
+      if (todoDoneArray.length > 0) {
+        todoDoneArray.sort(
+          (firstEl, secondEl) => firstEl.board - secondEl.board
+        );
+        todoDoneArray.forEach((el) => this.columnDone.addTask(el.name, true));
+      }
+    }
   }
 
   drawUI() {
-    const trelloBoardEl = document.createElement("div");
-    trelloBoardEl.classList.add("board");
+    if (!this.isPageLoaded) {
+      const trelloBoardEl = document.createElement("div");
+      trelloBoardEl.classList.add("board");
 
-    this.columnTodo = new Column(trelloBoardEl, "ToDo");
-    this.columnTodo.drawUI();
+      this.columnTodo = new Column(trelloBoardEl, "ToDo");
+      this.columnTodo.drawUI();
 
-    this.columnProgress = new Column(trelloBoardEl, "Progress");
-    this.columnProgress.drawUI();
+      this.columnProgress = new Column(trelloBoardEl, "Progress");
+      this.columnProgress.drawUI();
 
-    this.columnDone = new Column(trelloBoardEl, "Done");
-    this.columnDone.drawUI();
+      this.columnDone = new Column(trelloBoardEl, "Done");
+      this.columnDone.drawUI();
 
-    this.containerEl.appendChild(trelloBoardEl);
+      this.containerEl.appendChild(trelloBoardEl);
 
-    trelloBoardEl.addEventListener("click", this.removeTask.bind(this));
+      trelloBoardEl.addEventListener("click", this.removeTask.bind(this));
+    }
   }
 
   removeTask(e) {

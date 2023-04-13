@@ -121,7 +121,8 @@ export default class Column {
       if (addTaskTextareaEl.value) {
         createTaskButton.classList.remove("create-task-button__hide");
         addTaskFormWrapperEl.classList.remove("add-task-form-wrapper__active");
-        this.addTask(addTaskTextareaEl, false);
+        this.addTask(addTaskTextareaEl.value, false);
+        addTaskTextareaEl.value = "";
       } else {
         addTaskTextareaEl.classList.add("add-task-textarea__borderRed");
       }
@@ -137,8 +138,8 @@ export default class Column {
     return wraperButtonsTaskEl;
   }
 
-  addTask(addTaskTextareaEl, isPageLoaded) {
-    const taskText = addTaskTextareaEl.value;
+  addTask(addTaskTextareaText, isPageLoaded) {
+    const taskText = addTaskTextareaText;
     const task = new Task(
       taskText,
       "",
@@ -147,7 +148,7 @@ export default class Column {
     );
     this.tasksArray.push(task);
 
-    if (isPageLoaded) {
+    if (!isPageLoaded) {
       localStorageService.pushTask(task);
     }
 
@@ -156,7 +157,6 @@ export default class Column {
     taskEl.setAttribute("data-id", task.id);
 
     taskEl.textContent = taskText;
-    addTaskTextareaEl.value = "";
 
     const closeTaskButton = document.createElement("button");
     closeTaskButton.classList.add("close-task-button");
