@@ -1,9 +1,11 @@
 import "./column.css";
+import Task from "../../entities/Task";
 
 export default class Column {
   constructor(containerEl, columnName) {
     this.containerEl = containerEl;
     this.columnName = columnName;
+    this.tasksArray = [];
   }
 
   drawUI() {
@@ -135,9 +137,12 @@ export default class Column {
 
   addTask(addTaskTextareaEl) {
     const taskText = addTaskTextareaEl.value;
+    const task = new Task(taskText, '', this.tasksArray.length, this.columnName);
+    this.tasksArray.push(task);
 
     const taskEl = document.createElement("div");
     taskEl.classList.add("task");
+    taskEl.setAttribute("data-id", task.id);
 
     taskEl.textContent = taskText;
     addTaskTextareaEl.value = "";
@@ -145,8 +150,6 @@ export default class Column {
     const closeTaskButton = document.createElement("button");
     closeTaskButton.classList.add("close-task-button");
     taskEl.appendChild(closeTaskButton);
-
-    //SaveToLocalStorage.pushTask(this.columnName, taskText );
 
     this.tasksListEl.appendChild(taskEl);
   }
