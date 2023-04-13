@@ -1,4 +1,4 @@
-const taskArray = 'taskArray';
+const taskArray = "taskArray";
 
 export default class localStorageService {
   static pushTask(task) {

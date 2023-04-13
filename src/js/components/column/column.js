@@ -139,12 +139,17 @@ export default class Column {
 
   addTask(addTaskTextareaEl, isPageLoaded) {
     const taskText = addTaskTextareaEl.value;
-    const task = new Task(taskText, '', this.tasksArray.length, this.columnName);
+    const task = new Task(
+      taskText,
+      "",
+      this.tasksArray.length,
+      this.columnName
+    );
     this.tasksArray.push(task);
-    
+
     if (isPageLoaded) {
       localStorageService.pushTask(task);
-    };    
+    }
 
     const taskEl = document.createElement("div");
     taskEl.classList.add("task");
@@ -161,13 +166,15 @@ export default class Column {
   }
 
   removeTask(taskId) {
-    const removedTaskIndex = this.tasksArray.findIndex(element => element.id === taskId);
+    const removedTaskIndex = this.tasksArray.findIndex(
+      (element) => element.id === taskId
+    );
 
     if (removedTaskIndex >= 0) {
       this.tasksArray.splice(removedTaskIndex, 1);
 
-      this.tasksArray.forEach((element, index) => element.order = index);
+      this.tasksArray.forEach((element, index) => (element.order = index));
     }
-    console.log('delete task');
+    console.log("delete task");
   }
 }

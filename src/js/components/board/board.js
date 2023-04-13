@@ -7,7 +7,6 @@ export default class Board {
     this.containerEl = containerEl;
   }
 
-
   drawUI() {
     const trelloBoardEl = document.createElement("div");
     trelloBoardEl.classList.add("board");
@@ -23,18 +22,20 @@ export default class Board {
 
     this.containerEl.appendChild(trelloBoardEl);
 
-    trelloBoardEl.addEventListener('click', this.removeTask.bind(this));
+    trelloBoardEl.addEventListener("click", this.removeTask.bind(this));
   }
 
   removeTask(e) {
     if (e.target.classList.contains("close-task-button")) {
       const taskEl = e.target.closest(".task");
-      const columnName = taskEl.closest('.column').querySelector('.column-title').textContent;
-      if (columnName === 'ToDo') {
+      const columnName = taskEl
+        .closest(".column")
+        .querySelector(".column-title").textContent;
+      if (columnName === "ToDo") {
         this.columnTodo.removeTask(taskEl.getAttribute("data-id"));
-      } else if (columnName === 'Progress') {
+      } else if (columnName === "Progress") {
         this.columnProgress.removeTask(taskEl.getAttribute("data-id"));
-      } else if (columnName === 'Done') {
+      } else if (columnName === "Done") {
         this.columnDone.removeTask(taskEl.getAttribute("data-id"));
       }
       taskEl.remove();
@@ -43,8 +44,10 @@ export default class Board {
   }
 
   saveTasksToLocalStorage() {
-    const taskArray = this.columnTodo.tasksArray.concat(this.columnProgress.tasksArray, this.columnDone.tasksArray);
+    const taskArray = this.columnTodo.tasksArray.concat(
+      this.columnProgress.tasksArray,
+      this.columnDone.tasksArray
+    );
     localStorageService.setTasks(taskArray);
   }
-
 }
