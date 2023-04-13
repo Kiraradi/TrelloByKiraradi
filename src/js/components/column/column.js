@@ -1,5 +1,6 @@
 import "./column.css";
 import Task from "../../entities/Task";
+import localStorageService from "../../services/localStorageService";
 
 export default class Column {
   constructor(containerEl, columnName) {
@@ -17,14 +18,15 @@ export default class Column {
     this.tasksListEl.classList.add("tasks-list");
     columnEl.appendChild(this.tasksListEl);
 
-    this.tasksListEl.addEventListener("click", (e) => {
+    /*this.tasksListEl.addEventListener("click", (e) => {
       if (e.target.classList.contains("close-task-button")) {
         const taskEl = e.target.closest(".task");
         if (taskEl) {
           taskEl.remove();
+          this.removeTask(taskEl.getAttribute("data-id"))
         }
       }
-    });
+    });*/
 
     columnEl.appendChild(this.getAddTaskButtonEl());
     this.containerEl.appendChild(columnEl);
@@ -119,7 +121,7 @@ export default class Column {
       if (addTaskTextareaEl.value) {
         createTaskButton.classList.remove("create-task-button__hide");
         addTaskFormWrapperEl.classList.remove("add-task-form-wrapper__active");
-        this.addTask(addTaskTextareaEl);
+        this.addTask(addTaskTextareaEl, false);
       } else {
         addTaskTextareaEl.classList.add("add-task-textarea__borderRed");
       }
@@ -135,10 +137,14 @@ export default class Column {
     return wraperButtonsTaskEl;
   }
 
-  addTask(addTaskTextareaEl) {
+  addTask(addTaskTextareaEl, isPageLoaded) {
     const taskText = addTaskTextareaEl.value;
     const task = new Task(taskText, '', this.tasksArray.length, this.columnName);
     this.tasksArray.push(task);
+    
+    if (isPageLoaded) {
+      localStorageService.pushTask(task);
+    };    
 
     const taskEl = document.createElement("div");
     taskEl.classList.add("task");
@@ -152,5 +158,16 @@ export default class Column {
     taskEl.appendChild(closeTaskButton);
 
     this.tasksListEl.appendChild(taskEl);
+  }
+
+  removeTask(taskId) {
+    const removedTaskIndex = this.tasksArray.findIndex(element => element.id === taskId);
+
+    if (removedTaskIndex >= 0) {
+      this.tasksArray.splice(removedTaskIndex, 1);
+
+      this.tasksArray.forEach((element, index) => element.order = index);
+    }
+    console.log('delete task');
   }
 }
