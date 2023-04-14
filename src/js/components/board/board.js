@@ -63,7 +63,6 @@ export default class Board {
       this.containerEl.appendChild(trelloBoardEl);
 
       trelloBoardEl.addEventListener("click", this.removeTask.bind(this));
-      
     }
   }
 
@@ -128,5 +127,4 @@ export default class Board {
 
   }
   */
- 
 }
