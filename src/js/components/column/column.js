@@ -1,4 +1,5 @@
 import "./column.css";
+import TaskEl from "../TaskEl/TaskEl";
 import Task from "../../entities/Task";
 import localStorageService from "../../services/localStorageService";
 
@@ -17,16 +18,6 @@ export default class Column {
     this.tasksListEl = document.createElement("div");
     this.tasksListEl.classList.add("tasks-list");
     columnEl.appendChild(this.tasksListEl);
-
-    /*this.tasksListEl.addEventListener("click", (e) => {
-      if (e.target.classList.contains("close-task-button")) {
-        const taskEl = e.target.closest(".task");
-        if (taskEl) {
-          taskEl.remove();
-          this.removeTask(taskEl.getAttribute("data-id"))
-        }
-      }
-    });*/
 
     columnEl.appendChild(this.getAddTaskButtonEl());
     this.containerEl.appendChild(columnEl);
@@ -121,6 +112,7 @@ export default class Column {
       if (addTaskTextareaEl.value) {
         createTaskButton.classList.remove("create-task-button__hide");
         addTaskFormWrapperEl.classList.remove("add-task-form-wrapper__active");
+
         this.addTask(addTaskTextareaEl.value, false);
         addTaskTextareaEl.value = "";
       } else {
@@ -152,17 +144,8 @@ export default class Column {
       localStorageService.pushTask(task);
     }
 
-    const taskEl = document.createElement("div");
-    taskEl.classList.add("task");
-    taskEl.setAttribute("data-id", task.id);
-
-    taskEl.textContent = taskText;
-
-    const closeTaskButton = document.createElement("button");
-    closeTaskButton.classList.add("close-task-button");
-    taskEl.appendChild(closeTaskButton);
-
-    this.tasksListEl.appendChild(taskEl);
+    const taskEl = new TaskEl(task, this.tasksListEl, isPageLoaded);
+    taskEl.drawUI();
   }
 
   removeTask(taskId) {
@@ -175,6 +158,5 @@ export default class Column {
 
       this.tasksArray.forEach((element, index) => (element.order = index));
     }
-    console.log("delete task");
   }
 }

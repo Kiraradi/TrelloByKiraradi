@@ -63,6 +63,7 @@ export default class Board {
       this.containerEl.appendChild(trelloBoardEl);
 
       trelloBoardEl.addEventListener("click", this.removeTask.bind(this));
+      
     }
   }
 
@@ -91,4 +92,41 @@ export default class Board {
     );
     localStorageService.setTasks(taskArray);
   }
+
+  /*dragAndDrop() {
+    const onMouseUp = (e) => {
+      const mauseUpItem = e.target;
+
+      //containerTrelloBoard.insertBefore(this.actualElement, mauseUpItem);
+      this.actualElement.classList.remove('task__gragger');
+      //this.actualElement = undefined;
+      //debugger
+      document.removeEventListener('mouseup', onMouseUp);
+      document.removeEventListener('mouseover', onMouseOver);
+    }
+
+    const onMouseOver = (e) => {
+      //console.log(e);
+      this.actualElement.style.top = e.clientY + 'px';
+      this.actualElement.style.left = e.clientX + 'px';
+    }
+
+
+    const containerTrelloBoard = document.querySelector('.tasks-list');
+    containerTrelloBoard.addEventListener('mousedown' , (e) => {
+      e.preventDefault();
+      if(e.target.classList.contains('task')) {
+        this.actualElement = e.target;
+        this.actualElementWidth = this.actualElement.getBoundingClientRect().width;
+        //this.actualElement.style.width = `${this.actualElementWidth}px`
+        this.actualElement.classList.add('task__gragger');
+        
+        document.addEventListener('mouseup', onMouseUp);
+        document.addEventListener('mouseover', onMouseOver);
+      }
+    });
+
+  }
+  */
+ 
 }
