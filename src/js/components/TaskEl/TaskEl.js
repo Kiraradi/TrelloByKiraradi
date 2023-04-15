@@ -1,24 +1,15 @@
-import localStorageService from "../../services/localStorageService";
-
 import "./TaskEl.css";
 export default class TaskEl {
   constructor(task, parent, isPageLoaded) {
     this.task = task;
     this.parent = parent;
     this.isPageLoaded = isPageLoaded;
-    this.mouseDown = this.mouseDown.bind(this);
-    this.mouseUp = this.mouseUp.bind(this);
-    this.mouseMove = this.mouseMove.bind(this);
   }
 
   drawUI() {
     this.taskEl = document.createElement("div");
     this.taskEl.classList.add("task");
     this.taskEl.setAttribute("data-id", this.task.id);
-
-    this.plug = document.createElement("div");
-    this.plug.classList.add("plug");
-    this.taskEl.addEventListener("mousedown", this.mouseDown);
 
     this.taskEl.textContent = this.task.name;
 
@@ -29,7 +20,7 @@ export default class TaskEl {
     this.parent.appendChild(this.taskEl);
   }
 
-  mouseDown(e) {
+  /*mouseDown(e) {
     e.preventDefault();
     this.actualElement = e.target;
     if (this.actualElement.classList.contains("close-task-button")) {
@@ -87,5 +78,5 @@ export default class TaskEl {
 
     this.taskEl.style.left = `${e.clientX - this.shiftX}px`;
     this.taskEl.style.top = `${e.clientY - this.shiftY}px`;
-  }
+  }*/
 }

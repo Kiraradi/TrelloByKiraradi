@@ -113,7 +113,7 @@ export default class Column {
         createTaskButton.classList.remove("create-task-button__hide");
         addTaskFormWrapperEl.classList.remove("add-task-form-wrapper__active");
 
-        this.addTask(addTaskTextareaEl.value, false);
+        this.addTask(false, addTaskTextareaEl.value, false);
         addTaskTextareaEl.value = "";
       } else {
         addTaskTextareaEl.classList.add("add-task-textarea__borderRed");
@@ -130,10 +130,10 @@ export default class Column {
     return wraperButtonsTaskEl;
   }
 
-  addTask(addTaskTextareaText, isPageLoaded) {
-    const taskText = addTaskTextareaText;
+  addTask(id, name, isPageLoaded) {
     const task = new Task(
-      taskText,
+      id,
+      name,
       "",
       this.tasksArray.length,
       this.columnName
