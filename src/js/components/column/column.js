@@ -1,5 +1,4 @@
 import "./column.css";
-import TaskEl from "../TaskEl/TaskEl";
 import Task from "../../entities/Task";
 import localStorageService from "../../services/localStorageService";
 
@@ -144,8 +143,19 @@ export default class Column {
       localStorageService.pushTask(task);
     }
 
-    const taskEl = new TaskEl(task, this.tasksListEl, isPageLoaded);
-    taskEl.drawUI();
+    //const taskEl = new TaskEl(task, this.tasksListEl, isPageLoaded);
+
+    const taskEl = document.createElement("div");
+    taskEl.classList.add("task");
+    taskEl.setAttribute("data-id", task.id);
+
+    taskEl.textContent = task.name;
+
+    const closeTaskButton = document.createElement("button");
+    closeTaskButton.classList.add("close-task-button");
+    taskEl.appendChild(closeTaskButton);
+
+    this.tasksListEl.appendChild(taskEl);
   }
 
   removeTask(taskId) {

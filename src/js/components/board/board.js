@@ -222,8 +222,8 @@ export default class Board {
     columnTaskArray.splice(appendedTaskIndex, 0, this.deletedTask);
 
     columnTaskArray.forEach((el, index) => (el.order = index));
-    const AllTask = columnTaskArray.concat(tasksInOtherColumns);
+    const allTask = columnTaskArray.concat(tasksInOtherColumns);
 
-    localStorageService.setTasks(AllTask);
+    localStorageService.setTasks(allTask);
   }
 }
